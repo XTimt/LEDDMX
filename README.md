@@ -1,4 +1,4 @@
-# LEDDMX-00
+# LEDDMX
 
 ![LEDDMX Icon](https://github.com/XTimt/LEDDMX/blob/main/icons/icon.png)
 

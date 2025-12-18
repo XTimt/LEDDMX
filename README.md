@@ -29,7 +29,7 @@ The integration has been tested with the **LEDDMX-00** device, but according to 
 4. Paste the GitHub repository URL
 5. Select category **Integration**
 6. Click **Add**
-7. Restart Home Assistant
+7. Install integration and Restart Home Assistant
 
 **Important before restarting:**
 

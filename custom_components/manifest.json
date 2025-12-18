@@ -1,0 +1,19 @@
+{
+  "domain": "leddmx",
+  "name": "LEDDMX Controller",
+  "version": "1.0.0",
+  "documentation": "https://github.com/XTimt/LEDDMX",
+  "requirements": ["bleak-retry-connector>=2.0.0", "bleak>=0.20.0"],
+  "codeowners": ["@xtimt"],
+  "iot_class": "local_push",
+  "bluetooth": [
+    {
+      "service_uuid": "0000ffe0-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "local_name": "LEDDMX*"
+    }
+  ],
+  "config_flow": true,
+  "dependencies": ["bluetooth"]
+}

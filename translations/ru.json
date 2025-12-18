@@ -1,0 +1,24 @@
+{
+  "config": {
+    "step": {
+      "bluetooth_confirm": {
+        "title": "Найдено устройство LEDDMX",
+        "description": "Хотите настроить {name} ({address})?"
+      },
+      "user": {
+        "title": "Настройка устройства LEDDMX",
+        "data": {
+          "address": "Bluetooth адрес",
+          "name": "Название"
+        }
+      }
+    },
+    "error": {
+      "invalid_mac_address": "Неверный формат MAC адреса"
+    },
+    "abort": {
+      "already_configured": "Устройство уже настроено",
+      "no_devices_found": "Устройства не найдены"
+    }
+  }
+}

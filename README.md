@@ -11,13 +11,6 @@ The integration has been tested with the **LEDDMX-00** device, but according to 
 
 ---
 
-## BLE Protocol
-
-The BLE protocol implementation is based on documentation from this repository:  
-https://github.com/user154lt/LEDDMX-00
-
----
-
 ## Installation
 
 ### Requirements
@@ -70,10 +63,10 @@ If the device is not discovered automatically, you can add it manually using its
 
 ![Features](https://github.com/user-attachments/assets/2f1161e8-4349-4459-bb3e-74cd1c14abc8)
 
-- ✅Turn device on/off  
+- Turn device on/off  
   (after restarting Home Assistant, the initial connection may take some time)
-- 🎨Set lighting effects (all effects available in the official app)
-- 🔆Adjust brightness
+- Set lighting effects (all effects available in the official app)
+- Adjust brightness
 
 ---
 

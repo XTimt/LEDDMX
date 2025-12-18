@@ -2,7 +2,7 @@
 
 ![LEDDMX Icon](https://github.com/XTimt/LEDDMX/blob/main/icons/icon.png)
 
-LEDDMX is a custom Home Assistant integration that allows you to control LEDDMX Bluetooth devices using the official **LED LAMP** mobile application protocol.
+LEDDMX is a custom Home Assistant integration for Bluetooth lighting devices compatible with the LED LAMP app.
 
 The integration has been tested with the **LEDDMX-00** device, but according to the available documentation, the same BLE commands should also work with **LEDDMX-03**.
 

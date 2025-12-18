@@ -1,6 +1,7 @@
 """Config flow for LEDDMX integration."""
 from __future__ import annotations
 
+import re
 import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.components import bluetooth
@@ -77,24 +78,27 @@ class LEDDMXConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         errors = {}
         
         if user_input is not None:
-            address = user_input[CONF_ADDRESS]
+            address = user_input[CONF_ADDRESS].strip().upper()
             
-            # Validate MAC address format
-            try:
-                address = format_mac(address)
-            except ValueError:
+            # Улучшенная валидация MAC-адреса
+            if not self._is_valid_mac(address):
                 errors[CONF_ADDRESS] = "invalid_mac_address"
             else:
-                await self.async_set_unique_id(address)
-                self._abort_if_unique_id_configured()
-                
-                return self.async_create_entry(
-                    title=user_input.get(CONF_NAME, f"LEDDMX {address[-6:]}"),
-                    data={
-                        CONF_ADDRESS: address,
-                        CONF_NAME: user_input.get(CONF_NAME, f"LEDDMX {address[-6:]}"),
-                    },
-                )
+                try:
+                    # Приводим к стандартному формату
+                    address = format_mac(address)
+                    await self.async_set_unique_id(address)
+                    self._abort_if_unique_id_configured()
+                    
+                    return self.async_create_entry(
+                        title=user_input.get(CONF_NAME, f"LEDDMX {address[-6:]}"),
+                        data={
+                            CONF_ADDRESS: address,
+                            CONF_NAME: user_input.get(CONF_NAME, f"LEDDMX {address[-6:]}"),
+                        },
+                    )
+                except ValueError:
+                    errors[CONF_ADDRESS] = "invalid_mac_address"
 
         return self.async_show_form(
             step_id="user",
@@ -104,3 +108,23 @@ class LEDDMXConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             }),
             errors=errors,
         )
+    
+    def _is_valid_mac(self, address: str) -> bool:
+        """Validate MAC address format."""
+        # Регулярное выражение для MAC-адресов
+        mac_patterns = [
+            r'^([0-9A-F]{2}[:]){5}([0-9A-F]{2})$',  # AA:BB:CC:DD:EE:FF
+            r'^([0-9A-F]{2}[-]){5}([0-9A-F]{2})$',  # AA-BB-CC-DD-EE-FF
+            r'^[0-9A-F]{12}$',                      # AABBCCDDEEFF
+        ]
+        
+        for pattern in mac_patterns:
+            if re.match(pattern, address, re.IGNORECASE):
+                return True
+        
+        # Также проверяем стандартные форматы
+        try:
+            format_mac(address)
+            return True
+        except ValueError:
+            return False

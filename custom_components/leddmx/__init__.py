@@ -11,8 +11,8 @@ from .device import LEDDMXDevice
 
 _LOGGER = logging.getLogger(__name__)
 
-# Only light platform
-PLATFORMS = ["light"]
+# Only light and switch platforms
+PLATFORMS = ["light", "switch"]
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up LEDDMX from a config entry."""
@@ -29,7 +29,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     
     hass.data[DOMAIN][entry.entry_id] = device
     
-    # Forward to light platform only
+    # Forward to platforms
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     
     return True
@@ -37,7 +37,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Unload a config entry."""
-    # Unload light platform
+    # Unload all platforms
     unload_ok = await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
     
     if unload_ok and DOMAIN in hass.data:

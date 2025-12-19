@@ -1,7 +1,7 @@
 """LEDDMX patterns from PatternList.kt."""
 
 PATTERNS = [
-    "Off",
+    "Off",  # Оставляем для внутреннего использования, но не показываем в интерфейсе
     "Forward Dreaming",
     "Backward Dreaming",
     "Forward 7 Colors",

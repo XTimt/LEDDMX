@@ -67,6 +67,7 @@ If the device is not discovered automatically, you can add it manually using its
   (after restarting Home Assistant, the initial connection may take some time)
 - Set lighting effects (all effects available in the official app)
 - Adjust brightness
+- Experimental: added a microphone light entity with its own effects that react to the microphone on the board.
 
 ---
 

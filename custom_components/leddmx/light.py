@@ -373,8 +373,13 @@ class LEDDMXMicLight(LightEntity):
 
     @property
     def supported_color_modes(self):
-        """No color control in microphone mode."""
-        return set()
+        """Return supported color modes - only ON/OFF for microphone mode."""
+        return {ColorMode.ONOFF}
+
+    @property
+    def color_mode(self):
+        """Return the current color mode."""
+        return ColorMode.ONOFF
 
     @property
     def effect_list(self):

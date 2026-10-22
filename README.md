@@ -1,6 +1,6 @@
 # LEDDMX
 
-![LEDDMX Icon](https://github.com/XTimt/LEDDMX/blob/main/icons/icon.png)
+![LEDDMX Icon](https://github.com/XTimt/LEDDMX/blob/main/brand/icon.png)
 
 LEDDMX is a custom Home Assistant integration for Bluetooth lighting devices compatible with the LED LAMP app, with device names in the format `LED DMX XX-YYYY`.
 

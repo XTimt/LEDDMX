@@ -1,6 +1,5 @@
 {
   "name": "LEDDMX Controller",
-  "content": "integration",
   "homeassistant": "2025.10.0",
   "zip_release": false
 }
